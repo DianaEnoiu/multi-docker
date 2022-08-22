@@ -9,10 +9,10 @@ jobs:
     steps:
       - name: Checkout repo
       - uses: actions/checkout@v2
-      # - name: Build the Docker image
-      #   run: docker compose -f docker-compose.yml build
-      # - name: Check files
-      #   run: ls 
+      - name: Build the Docker image
+        run: docker compose -f docker-compose.yml build
+      - name: Check files
+        run: ls 
     
       - name: Generate deployment package
           run: zip -r deploy.zip . -x '*.git*' 'node_modules'
