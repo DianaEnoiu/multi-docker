@@ -13,12 +13,10 @@ jobs:
         run: docker compose -f docker-compose.yml build
       - name: Check files
         run: ls 
-      - name: Build images
       - run: docker build -t dianaenoiu/multi-client ./client
       - run: docker build -t dianaenoiu/multi-nginx ./nginx
       - run: docker build -t dianaenoiu/multi-server ./server
       - run: docker build -t dianaenoiu/multi-worker ./worker
-      - name: Push images
       - run: docker push -t dianaenoiu/multi-client ./client
       - run: docker push -t dianaenoiu/multi-nginx ./nginx
       - run: docker push -t dianaenoiu/multi-server ./server
