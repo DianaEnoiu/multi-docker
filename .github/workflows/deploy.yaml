@@ -13,14 +13,14 @@ jobs:
         run: docker compose -f docker-compose.yml build
       - name: Check files
         run: ls 
-      - run: docker build -t dianaenoiu/multi-client ./client
-      - run: docker build -t dianaenoiu/multi-nginx ./nginx
-      - run: docker build -t dianaenoiu/multi-server ./server
-      - run: docker build -t dianaenoiu/multi-worker ./worker
-      - run: docker push dianaenoiu/multi-client 
-      - run: docker push dianaenoiu/multi-nginx 
-      - run: docker push dianaenoiu/multi-server 
-      - run: docker push dianaenoiu/multi-worker 
+      - run: docker build -t dianaioanaenoiu/multi-client ./client
+      - run: docker build -t dianaioanaenoiu/multi-nginx ./nginx
+      - run: docker build -t dianaioanaenoiu/multi-server ./server
+      - run: docker build -t dianaioanaenoiu/multi-worker ./worker
+      - run: docker push dianaioanaenoiu/multi-client 
+      - run: docker push dianaioanaenoiu/multi-nginx 
+      - run: docker push dianaioanaenoiu/multi-server 
+      - run: docker push dianaioanaenoiu/multi-worker 
 
       
       - name: Deploy to EB
