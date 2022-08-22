@@ -1,11 +1,11 @@
 version: "3"
 services:
   client:
-    image: "dianaioanaenoiu/client"
+    image: "dianaioanaenoiu/multi-client"
     mem_limit: 128m
     hostname: client
   server:
-    image: "dianaioanaenoiu/server"
+    image: "dianaioanaenoiu/multi-server"
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,14 +17,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "dianaioanaenoiu/worker"
+    image: "dianaioanaenoiu/multi-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "dianaioanaenoiu/nginx"
+    image: "dianaioanaenoiu/multi-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
