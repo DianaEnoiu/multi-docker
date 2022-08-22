@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Login and build docker image
       - name: Run docker-compose stack
         run: docker-compose up -d
       - name: Check files
