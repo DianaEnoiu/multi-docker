@@ -1,16 +1,16 @@
 name: Docker compose actions workflow
 on:
   push:
-      branches:
-        - master
+      branches: [master]
 
 jobs:
   build: 
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
       - uses: actions/checkout@v2
-      - name: Run docker-compose stack
-        run: docker-compose up -d
+      - name: Build the Docker image
+        run: docker compose -f docker-compose.yml build
       - name: Check files
         run: ls 
     
