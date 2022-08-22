@@ -1,12 +1,8 @@
-name: Build, Deploy to EBS
+name: Docker compose actions workflow
 on:
   push:
       branches:
         - master
-      paths-ignore:
-        - ".github/**"
-        - ".github/workflows/**"
-        - "*.md"
   workflow_dispatch:
 
 jobs:
