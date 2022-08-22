@@ -1,0 +1,38 @@
+name: Build, Release, Run
+on:
+  push:
+      branches:
+        - main
+        - master
+      paths-ignore:
+        - ".github/**"
+        - ".github/workflows/**"
+        - "*.md"
+  workflow_dispatch:
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run docker-compose stack
+      run: docker-compose up -d
+    - name: Check files
+      run: ls 
+  deploy:
+    needs: build
+    - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*' 'node_modules
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v14
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+        application_name: multi-docker
+        environment_name: Multidocker-env
+        existing_bucket_name: elasticbeanstalk-eu-west-2-735504675342
+        region: eu-west-2
+        version_label: ${{ github.sha }}
+        deployment_package: deploy.zip
+
+ 
